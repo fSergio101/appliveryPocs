@@ -1,1 +1,1 @@
-include ':app', ':applvsdklib', ':applvsdklib2'
+include ':app', ':applvsdklib'
