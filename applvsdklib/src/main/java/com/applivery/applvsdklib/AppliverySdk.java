@@ -60,9 +60,13 @@ public class AppliverySdk {
 
     //TODO Assign Access token and appID
 
-    //getExecutor().execute();
+    getExecutor().execute(getObtainAppConfigRequestInstance());
 
     sdkInitialized = true;
+  }
+
+  private static Runnable getObtainAppConfigRequestInstance() {
+    return null;
   }
 
   public static Executor getExecutor() {
