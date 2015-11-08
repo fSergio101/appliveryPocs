@@ -13,8 +13,13 @@ public abstract class BaseMapper {
   public BusinessObject map(ServerResponse serverResponse) {
     if (serverResponse.getHttpErrorResponseCodeType() == ServerResponse.HTTP_OK_RESPONSE_CODE){
       return mapBusinessObject(serverResponse);
+    }else if (serverResponse.getHttpErrorResponseCodeType() ==
+        ServerResponse.CLIENT_HTTP_ERROR_RESPONSE_CODE ||
+        serverResponse.getHttpErrorResponseCodeType() ==
+            ServerResponse.SERVER_HTTP_ERROR_RESPONSE_CODE ){
+      return new ErrorObject(serverResponse, false);
     }else{
-      return new ErrorObject();
+      return new ErrorObject(serverResponse, true);
     }
   }
 

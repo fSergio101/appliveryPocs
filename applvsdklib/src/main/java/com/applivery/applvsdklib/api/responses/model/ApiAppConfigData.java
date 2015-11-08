@@ -19,7 +19,7 @@ public class ApiAppConfigData {
   private String name;
   @SerializedName("skd")
   @Expose
-  private ApiSkd skd;
+  private ApiSdK skd;
   @SerializedName("owner")
   @Expose
   private String owner;
@@ -73,11 +73,11 @@ public class ApiAppConfigData {
     this.name = name;
   }
 
-  public ApiSkd getSkd() {
+  public ApiSdK getSkd() {
     return skd;
   }
 
-  public void setSkd(ApiSkd skd) {
+  public void setSkd(ApiSdK skd) {
     this.skd = skd;
   }
 

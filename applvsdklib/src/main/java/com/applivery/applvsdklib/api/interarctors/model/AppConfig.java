@@ -11,7 +11,7 @@ public class AppConfig implements BusinessObject{
 
   private String Id;
   private String name;
-  private Skd skd;
+  private Sdk sdk;
   private String owner;
   private String creator;
   private Downloads downloads;
@@ -41,12 +41,12 @@ public class AppConfig implements BusinessObject{
     this.name = name;
   }
 
-  public Skd getSkd() {
-    return skd;
+  public Sdk getSdk() {
+    return sdk;
   }
 
-  public void setSkd(Skd skd) {
-    this.skd = skd;
+  public void setSdk(Sdk sdk) {
+    this.sdk = sdk;
   }
 
   public String getOwner() {

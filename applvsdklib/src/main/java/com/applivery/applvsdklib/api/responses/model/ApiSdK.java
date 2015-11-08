@@ -1,17 +1,34 @@
-package com.applivery.applvsdklib.api.interarctors.model;
+package com.applivery.applvsdklib.api.responses.model;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by Sergio Martinez Rodriguez
  * Date 8/11/15.
  */
-public class Skd {
+public class ApiSdK {
 
+  @SerializedName("ota")
+  @Expose
   private Boolean ota;
+  @SerializedName("forceUpdate")
+  @Expose
   private Boolean forceUpdate;
-  private Ios ios;
-  private Android android;
+  @SerializedName("ios")
+  @Expose
+  private ApiIos ios;
+  @SerializedName("android")
+  @Expose
+  private ApiAndroid android;
+  @SerializedName("storeRelease")
+  @Expose
   private Boolean storeRelease;
+  @SerializedName("updateMsg")
+  @Expose
   private String updateMsg;
+  @SerializedName("mustUpdateMsg")
+  @Expose
   private String mustUpdateMsg;
 
   public Boolean getOta() {
@@ -30,19 +47,19 @@ public class Skd {
     this.forceUpdate = forceUpdate;
   }
 
-  public Ios getIos() {
+  public ApiIos getIos() {
     return ios;
   }
 
-  public void setIos(Ios ios) {
+  public void setIos(ApiIos ios) {
     this.ios = ios;
   }
 
-  public Android getAndroid() {
+  public ApiAndroid getAndroid() {
     return android;
   }
 
-  public void setAndroid(Android android) {
+  public void setAndroid(ApiAndroid android) {
     this.android = android;
   }
 
