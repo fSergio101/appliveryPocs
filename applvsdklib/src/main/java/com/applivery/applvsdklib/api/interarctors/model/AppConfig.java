@@ -1,6 +1,7 @@
 package com.applivery.applvsdklib.api.interarctors.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,18 +13,15 @@ public class AppConfig implements BusinessObject{
   private String Id;
   private String name;
   private Sdk sdk;
-  private String owner;
-  private String creator;
-  private Downloads downloads;
-  private Integer totalDownloads;
-  private Integer buildsCount;
-  private List<Object> invited = new ArrayList<Object>();
-  private List<Object> teams = new ArrayList<Object>();
-  private List<Object> members = new ArrayList<Object>();
-  private String modified;
-  private String created;
+  private int totalDownloads;
+  private int buildsCount;
+  private Date modified;
+  private Date created;
   private List<String> so = new ArrayList<String>();
   private String description;
+  private int sitesCount;
+  private int crashesCount;
+  private int feedBackCount;
 
   public String getId() {
     return Id;
@@ -49,83 +47,35 @@ public class AppConfig implements BusinessObject{
     this.sdk = sdk;
   }
 
-  public String getOwner() {
-    return owner;
-  }
-
-  public void setOwner(String owner) {
-    this.owner = owner;
-  }
-
-  public String getCreator() {
-    return creator;
-  }
-
-  public void setCreator(String creator) {
-    this.creator = creator;
-  }
-
-  public Downloads getDownloads() {
-    return downloads;
-  }
-
-  public void setDownloads(Downloads downloads) {
-    this.downloads = downloads;
-  }
-
-  public Integer getTotalDownloads() {
+  public int getTotalDownloads() {
     return totalDownloads;
   }
 
-  public void setTotalDownloads(Integer totalDownloads) {
+  public void setTotalDownloads(int totalDownloads) {
     this.totalDownloads = totalDownloads;
   }
 
-  public Integer getBuildsCount() {
+  public int getBuildsCount() {
     return buildsCount;
   }
 
-  public void setBuildsCount(Integer buildsCount) {
+  public void setBuildsCount(int buildsCount) {
     this.buildsCount = buildsCount;
   }
 
-  public List<Object> getInvited() {
-    return invited;
-  }
-
-  public void setInvited(List<Object> invited) {
-    this.invited = invited;
-  }
-
-  public List<Object> getTeams() {
-    return teams;
-  }
-
-  public void setTeams(List<Object> teams) {
-    this.teams = teams;
-  }
-
-  public List<Object> getMembers() {
-    return members;
-  }
-
-  public void setMembers(List<Object> members) {
-    this.members = members;
-  }
-
-  public String getModified() {
+  public Date getModified() {
     return modified;
   }
 
-  public void setModified(String modified) {
+  public void setModified(Date modified) {
     this.modified = modified;
   }
 
-  public String getCreated() {
+  public Date getCreated() {
     return created;
   }
 
-  public void setCreated(String created) {
+  public void setCreated(Date created) {
     this.created = created;
   }
 
@@ -143,5 +93,29 @@ public class AppConfig implements BusinessObject{
 
   public void setDescription(String description) {
     this.description = description;
+  }
+
+  public int getSitesCount() {
+    return sitesCount;
+  }
+
+  public void setSitesCount(int sitesCount) {
+    this.sitesCount = sitesCount;
+  }
+
+  public int getCrashesCount() {
+    return crashesCount;
+  }
+
+  public void setCrashesCount(int crashesCount) {
+    this.crashesCount = crashesCount;
+  }
+
+  public int getFeedBackCount() {
+    return feedBackCount;
+  }
+
+  public void setFeedBackCount(int feedBackCount) {
+    this.feedBackCount = feedBackCount;
   }
 }

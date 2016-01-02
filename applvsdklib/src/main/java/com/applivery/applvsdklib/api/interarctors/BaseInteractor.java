@@ -2,6 +2,7 @@ package com.applivery.applvsdklib.api.interarctors;
 
 import android.os.Handler;
 import android.os.Message;
+import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
 import com.applivery.applvsdklib.api.interarctors.model.ErrorObject;
 
 /**
@@ -12,25 +13,25 @@ public abstract class BaseInteractor<T> implements Runnable{
 
   Handler handler = new Handler() {
     public void handleMessage(Message msg) {
-       receivedResponse(msg.obj);
+       receivedResponse((T)msg.obj);
     }
   };
 
-  protected abstract void receivedResponse(Object obj);
+  protected abstract void receivedResponse(T obj);
 
-  protected void receivedResponse(Object obj, Class<T> responseClass) {
+  protected void receivedResponse(T obj, Class<T> responseClass) {
     try {
       T response = responseClass.cast(obj);
-      digestServerResponse(response);
+      success(response);
     }catch (ClassCastException classCastException){
       ErrorObject errorObject = (ErrorObject) obj;
-      logError(errorObject);
+      error(errorObject);
     }
   }
 
-  protected abstract void logError(ErrorObject serverResponse);
+  protected abstract void error(ErrorObject serverResponse);
 
-  protected abstract void digestServerResponse(T response);
+  protected abstract void success(T response);
 
   @Override public void run() {
     Message message = new Message();
@@ -38,5 +39,5 @@ public abstract class BaseInteractor<T> implements Runnable{
     handler.sendMessage(message);
   }
 
-  protected abstract Object performRequest();
+  protected abstract BusinessObject performRequest();
 }

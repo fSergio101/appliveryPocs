@@ -2,7 +2,6 @@ package com.applivery.applvsdklib.api.responses.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -17,33 +16,42 @@ public class ApiAppConfigData {
   @SerializedName("name")
   @Expose
   private String name;
-  @SerializedName("skd")
-  @Expose
-  private ApiSdK skd;
   @SerializedName("owner")
   @Expose
-  private String owner;
+  private ApiOwner owner;
   @SerializedName("creator")
   @Expose
-  private String creator;
-  @SerializedName("downloads")
+  private ApiCreator creator;
+  @SerializedName("sdk")
   @Expose
-  private ApiDownloads downloads;
+  private ApiSdK sdk;
+  @SerializedName("crashesCount")
+  @Expose
+  private int crashesCount;
+  @SerializedName("feedbackCount")
+  @Expose
+  private int feedbackCount;
+  @SerializedName("sitesCount")
+  @Expose
+  private int sitesCount;
   @SerializedName("totalDownloads")
   @Expose
-  private Integer totalDownloads;
+  private int totalDownloads;
   @SerializedName("buildsCount")
   @Expose
-  private Integer buildsCount;
+  private int buildsCount;
   @SerializedName("invited")
   @Expose
-  private List<Object> invited = new ArrayList<Object>();
+  private List<ApiMember> invited;
   @SerializedName("teams")
   @Expose
-  private List<Object> teams = new ArrayList<Object>();
+  private List<ApiTeam> teams;
   @SerializedName("members")
   @Expose
-  private List<Object> members = new ArrayList<Object>();
+  private List<ApiMember> members;
+  @SerializedName("active")
+  @Expose
+  private boolean active;
   @SerializedName("modified")
   @Expose
   private String modified;
@@ -52,7 +60,7 @@ public class ApiAppConfigData {
   private String created;
   @SerializedName("so")
   @Expose
-  private List<String> so = new ArrayList<String>();
+  private List<String> so;
   @SerializedName("description")
   @Expose
   private String description;
@@ -73,76 +81,100 @@ public class ApiAppConfigData {
     this.name = name;
   }
 
-  public ApiSdK getSkd() {
-    return skd;
-  }
-
-  public void setSkd(ApiSdK skd) {
-    this.skd = skd;
-  }
-
-  public String getOwner() {
+  public ApiOwner getOwner() {
     return owner;
   }
 
-  public void setOwner(String owner) {
+  public void setOwner(ApiOwner owner) {
     this.owner = owner;
   }
 
-  public String getCreator() {
+  public ApiCreator getCreator() {
     return creator;
   }
 
-  public void setCreator(String creator) {
+  public void setCreator(ApiCreator creator) {
     this.creator = creator;
   }
 
-  public ApiDownloads getDownloads() {
-    return downloads;
+  public ApiSdK getSdk() {
+    return sdk;
   }
 
-  public void setDownloads(ApiDownloads downloads) {
-    this.downloads = downloads;
+  public void setSdk(ApiSdK sdk) {
+    this.sdk = sdk;
   }
 
-  public Integer getTotalDownloads() {
+  public int getCrashesCount() {
+    return crashesCount;
+  }
+
+  public void setCrashesCount(int crashesCount) {
+    this.crashesCount = crashesCount;
+  }
+
+  public int getFeedbackCount() {
+    return feedbackCount;
+  }
+
+  public void setFeedbackCount(int feedbackCount) {
+    this.feedbackCount = feedbackCount;
+  }
+
+  public int getSitesCount() {
+    return sitesCount;
+  }
+
+  public void setSitesCount(int sitesCount) {
+    this.sitesCount = sitesCount;
+  }
+
+  public int getTotalDownloads() {
     return totalDownloads;
   }
 
-  public void setTotalDownloads(Integer totalDownloads) {
+  public void setTotalDownloads(int totalDownloads) {
     this.totalDownloads = totalDownloads;
   }
 
-  public Integer getBuildsCount() {
+  public int getBuildsCount() {
     return buildsCount;
   }
 
-  public void setBuildsCount(Integer buildsCount) {
+  public void setBuildsCount(int buildsCount) {
     this.buildsCount = buildsCount;
   }
 
-  public List<Object> getInvited() {
+  public List<ApiMember> getInvited() {
     return invited;
   }
 
-  public void setInvited(List<Object> invited) {
+  public void setInvited(List<ApiMember> invited) {
     this.invited = invited;
   }
 
-  public List<Object> getTeams() {
+  public List<ApiTeam> getTeams() {
     return teams;
   }
 
-  public void setTeams(List<Object> teams) {
+  public void setTeams(List<ApiTeam> teams) {
     this.teams = teams;
   }
 
-  public List<Object> getMembers() {
+  public List<ApiMember> getMembers() {
     return members;
   }
 
-  public void setMembers(List<Object> members) {
+  public void setMembers(List<ApiMember> members) {
     this.members = members;
+  }
+
+  public boolean isActive() {
+    return active;
+  }
+
+  public void setActive(boolean active) {
+    this.active = active;
   }
 
   public String getModified() {

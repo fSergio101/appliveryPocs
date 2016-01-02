@@ -8,20 +8,16 @@ import com.applivery.applvsdklib.api.responses.ServerResponse;
  * Created by Sergio Martinez Rodriguez
  * Date 8/11/15.
  */
-public abstract class BaseMapper {
+public abstract class BaseMapper<Model extends BusinessObject, Data>{
 
-  public BusinessObject map(ServerResponse serverResponse) {
-    if (serverResponse.getHttpErrorResponseCodeType() == ServerResponse.HTTP_OK_RESPONSE_CODE){
-      return mapBusinessObject(serverResponse);
-    }else if (serverResponse.getHttpErrorResponseCodeType() ==
-        ServerResponse.CLIENT_HTTP_ERROR_RESPONSE_CODE ||
-        serverResponse.getHttpErrorResponseCodeType() ==
-            ServerResponse.SERVER_HTTP_ERROR_RESPONSE_CODE ){
-      return new ErrorObject(serverResponse, false);
+  public BusinessObject map(ServerResponse<Data> serverResponse) {
+
+    if (serverResponse.getStatus() == true){
+      return mapBusinessObject(serverResponse.getData());
     }else{
-      return new ErrorObject(serverResponse, true);
+      return new ErrorObject(serverResponse.getError());
     }
   }
 
-  protected abstract BusinessObject mapBusinessObject(ServerResponse serverResponse);
+  protected abstract Model mapBusinessObject(Data serverResponse);
 }

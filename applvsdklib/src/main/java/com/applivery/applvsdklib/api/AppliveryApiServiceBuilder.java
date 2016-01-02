@@ -2,6 +2,7 @@ package com.applivery.applvsdklib.api;
 
 import com.applivery.applvsdklib.BuildConfig;
 import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.logging.HttpLoggingInterceptor;
 import retrofit.GsonConverterFactory;
 import retrofit.Retrofit;
 
@@ -13,7 +14,7 @@ public class AppliveryApiServiceBuilder {
 
   public static AppliveryApiService getAppliveryApiInstance(){
 
-    LoggingInterceptor loggingInterceptor = new LoggingInterceptor();
+    HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
 
     OkHttpClient okHttpClient = new OkHttpClient();
     if (BuildConfig.DEBUG){ okHttpClient.interceptors().add(loggingInterceptor);}

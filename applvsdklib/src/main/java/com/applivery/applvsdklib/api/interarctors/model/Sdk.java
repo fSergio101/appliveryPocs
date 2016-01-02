@@ -6,36 +6,27 @@ package com.applivery.applvsdklib.api.interarctors.model;
  */
 public class Sdk {
 
-  private Boolean ota;
-  private Boolean forceUpdate;
-  private Ios ios;
+  private boolean ota;
+  private boolean forceUpdate;
   private Android android;
-  private Boolean storeRelease;
+  private boolean storeRelease;
   private String updateMsg;
   private String mustUpdateMsg;
 
-  public Boolean getOta() {
+  public boolean isOta() {
     return ota;
   }
 
-  public void setOta(Boolean ota) {
+  public void setOta(boolean ota) {
     this.ota = ota;
   }
 
-  public Boolean getForceUpdate() {
+  public boolean isForceUpdate() {
     return forceUpdate;
   }
 
-  public void setForceUpdate(Boolean forceUpdate) {
+  public void setForceUpdate(boolean forceUpdate) {
     this.forceUpdate = forceUpdate;
-  }
-
-  public Ios getIos() {
-    return ios;
-  }
-
-  public void setIos(Ios ios) {
-    this.ios = ios;
   }
 
   public Android getAndroid() {
@@ -46,11 +37,11 @@ public class Sdk {
     this.android = android;
   }
 
-  public Boolean getStoreRelease() {
+  public boolean isStoreRelease() {
     return storeRelease;
   }
 
-  public void setStoreRelease(Boolean storeRelease) {
+  public void setStoreRelease(boolean storeRelease) {
     this.storeRelease = storeRelease;
   }
 

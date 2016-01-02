@@ -9,21 +9,10 @@ import com.google.gson.annotations.SerializedName;
  */
 public class ApiSdK {
 
-  @SerializedName("ota")
-  @Expose
-  private Boolean ota;
-  @SerializedName("forceUpdate")
-  @Expose
-  private Boolean forceUpdate;
-  @SerializedName("ios")
-  @Expose
-  private ApiIos ios;
   @SerializedName("android")
   @Expose
   private ApiAndroid android;
-  @SerializedName("storeRelease")
-  @Expose
-  private Boolean storeRelease;
+
   @SerializedName("updateMsg")
   @Expose
   private String updateMsg;
@@ -31,29 +20,18 @@ public class ApiSdK {
   @Expose
   private String mustUpdateMsg;
 
-  public Boolean getOta() {
-    return ota;
-  }
-
-  public void setOta(Boolean ota) {
-    this.ota = ota;
-  }
-
-  public Boolean getForceUpdate() {
-    return forceUpdate;
-  }
-
-  public void setForceUpdate(Boolean forceUpdate) {
-    this.forceUpdate = forceUpdate;
-  }
-
-  public ApiIos getIos() {
-    return ios;
-  }
-
-  public void setIos(ApiIos ios) {
-    this.ios = ios;
-  }
+  @SerializedName("forceUpdate")
+  @Expose
+  private boolean forceUpdate;
+  @SerializedName("storeRelease")
+  @Expose
+  private boolean storeRelease;
+  @SerializedName("ota")
+  @Expose
+  private boolean ota;
+  @SerializedName("active")
+  @Expose
+  private boolean active;
 
   public ApiAndroid getAndroid() {
     return android;
@@ -61,14 +39,6 @@ public class ApiSdK {
 
   public void setAndroid(ApiAndroid android) {
     this.android = android;
-  }
-
-  public Boolean getStoreRelease() {
-    return storeRelease;
-  }
-
-  public void setStoreRelease(Boolean storeRelease) {
-    this.storeRelease = storeRelease;
   }
 
   public String getUpdateMsg() {
@@ -85,5 +55,37 @@ public class ApiSdK {
 
   public void setMustUpdateMsg(String mustUpdateMsg) {
     this.mustUpdateMsg = mustUpdateMsg;
+  }
+
+  public boolean isForceUpdate() {
+    return forceUpdate;
+  }
+
+  public void setForceUpdate(boolean forceUpdate) {
+    this.forceUpdate = forceUpdate;
+  }
+
+  public boolean isStoreRelease() {
+    return storeRelease;
+  }
+
+  public void setStoreRelease(boolean storeRelease) {
+    this.storeRelease = storeRelease;
+  }
+
+  public boolean isOta() {
+    return ota;
+  }
+
+  public void setOta(boolean ota) {
+    this.ota = ota;
+  }
+
+  public boolean isActive() {
+    return active;
+  }
+
+  public void setActive(boolean active) {
+    this.active = active;
   }
 }

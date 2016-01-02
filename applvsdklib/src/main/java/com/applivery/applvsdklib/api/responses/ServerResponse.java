@@ -5,28 +5,19 @@ import com.google.gson.annotations.SerializedName;
 @SuppressWarnings("UnusedDeclaration")
 public class ServerResponse<JsonObject> {
 
-    public static final int HTTP_OK_RESPONSE_CODE = 200;
-    public static final int CLIENT_HTTP_ERROR_RESPONSE_CODE = 400;
-    public static final int SERVER_HTTP_ERROR_RESPONSE_CODE = 500;
-    public static final int NETWORK_HTTP_ERROR_RESPONSE_CODE = -100;
-
     @SerializedName("status")
-    private String status;
+    private boolean status;
 
-    @SerializedName("data")
+    @SerializedName("response")
     private JsonObject data;
 
     @SerializedName("error")
     private ApiAppliveryServerErrorResponse error;
 
-    private int httpErrorResponseCodeType;
+    private int httpCode;
 
-    public int getHttpErrorResponseCodeType() {
-        return httpErrorResponseCodeType;
-    }
-
-    public void setHttpErrorResponseCodeType(int httpErrorResponseCodeType) {
-        this.httpErrorResponseCodeType = httpErrorResponseCodeType;
+    public void setHttpCode(int httpCode) {
+        this.httpCode = httpCode;
     }
 
     public ApiAppliveryServerErrorResponse getError() {
@@ -37,11 +28,11 @@ public class ServerResponse<JsonObject> {
         this.error = error;
     }
 
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 
@@ -53,14 +44,4 @@ public class ServerResponse<JsonObject> {
         this.data = data;
     }
 
-//    public boolean isSuccess() {
-////        return status == null || !status.toUpperCase().equals("KO");
-//        return status != null && !status.toUpperCase().equals("KO");
-//    }
-//
-//    public static ServerResponse cancel() {
-//        ServerResponse response = new ServerResponse();
-//        response.setStatus("KO");
-//        return response;
-//    }
 }

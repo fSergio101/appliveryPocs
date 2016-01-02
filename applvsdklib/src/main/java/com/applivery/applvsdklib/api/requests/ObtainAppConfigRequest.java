@@ -1,9 +1,10 @@
 package com.applivery.applvsdklib.api.requests;
 
 import com.applivery.applvsdklib.api.AppliveryApiService;
-import com.applivery.applvsdklib.api.interarctors.model.AppConfig;
 import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
+import com.applivery.applvsdklib.api.requests.mappers.AndroidMapper;
 import com.applivery.applvsdklib.api.requests.mappers.ApiAppConfigResponseMapper;
+import com.applivery.applvsdklib.api.requests.mappers.SdkMapper;
 import com.applivery.applvsdklib.api.responses.ApiAppConfigResponse;
 import retrofit.Call;
 
@@ -20,12 +21,13 @@ public class ObtainAppConfigRequest extends ServerRequest {
   public ObtainAppConfigRequest(AppliveryApiService apiService, String appId) {
     this.apiService = apiService;
     this.appId = appId;
-    this.apiAppConfigResponseMapper = new ApiAppConfigResponseMapper();
+    SdkMapper sdkMapper = new SdkMapper(new AndroidMapper());
+    this.apiAppConfigResponseMapper = new ApiAppConfigResponseMapper(sdkMapper);
   }
 
   @Override protected BusinessObject performRequest() {
     Call<ApiAppConfigResponse> response = apiService.obtainAppConfig(appId);
-    ApiAppConfigResponse apiAppConfigResponse = super.performRequest(ApiAppConfigResponse.class, response);
+    ApiAppConfigResponse apiAppConfigResponse = super.performRequest(response);
     BusinessObject businessObject = apiAppConfigResponseMapper.map(apiAppConfigResponse);
     return businessObject;
   }

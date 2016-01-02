@@ -2,6 +2,7 @@ package com.applivery.applvsdklib.api.interarctors;
 
 import com.applivery.applvsdklib.api.AppliveryApiService;
 import com.applivery.applvsdklib.api.interarctors.model.AppConfig;
+import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
 import com.applivery.applvsdklib.api.interarctors.model.ErrorObject;
 import com.applivery.applvsdklib.api.requests.ObtainAppConfigRequest;
 
@@ -11,25 +12,25 @@ import com.applivery.applvsdklib.api.requests.ObtainAppConfigRequest;
  */
 public class ObtainAppConfigInteractor extends BaseInteractor<AppConfig> {
 
-  ObtainAppConfigRequest obtainAppConfigRequest;
+  private final ObtainAppConfigRequest obtainAppConfigRequest;
 
   public ObtainAppConfigInteractor(AppliveryApiService apiService, String appId) {
     obtainAppConfigRequest = new ObtainAppConfigRequest(apiService, appId);
   }
 
-  @Override protected void receivedResponse(Object obj) {
+  @Override protected void receivedResponse(AppConfig obj) {
     super.receivedResponse(obj, AppConfig.class);
   }
 
-  @Override protected void logError(ErrorObject errorObject) {
+  @Override protected void error(ErrorObject errorObject) {
 
   }
 
-  @Override protected void digestServerResponse(AppConfig appConfig) {
+  @Override protected void success(AppConfig appConfig) {
 
   }
 
-  @Override protected Object performRequest() {
+  @Override protected BusinessObject performRequest() {
     return obtainAppConfigRequest.execute();
   }
 }
