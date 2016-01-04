@@ -1,9 +1,9 @@
-package com.applivery.applvsdklib.api.interarctors;
+package com.applivery.applvsdklib.api.interactors;
 
 import android.os.Handler;
 import android.os.Message;
-import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
-import com.applivery.applvsdklib.api.interarctors.model.ErrorObject;
+import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
+import com.applivery.applvsdklib.api.interactors.model.ErrorObject;
 
 /**
  * Created by Sergio Martinez Rodriguez

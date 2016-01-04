@@ -5,5 +5,5 @@ package com.applivery.applvsdklib.api.responses.model;
  * Date 3/1/16.
  */
 public class ApiAppTokenData {
-  
+
 }

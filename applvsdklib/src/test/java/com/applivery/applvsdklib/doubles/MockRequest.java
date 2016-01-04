@@ -1,10 +1,7 @@
 package com.applivery.applvsdklib.doubles;
 
-import com.applivery.applvsdklib.api.AppliveryApiService;
-import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
+import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
 import com.applivery.applvsdklib.api.requests.ServerRequest;
-import com.applivery.applvsdklib.api.requests.mappers.ApiAppConfigResponseMapper;
-import com.applivery.applvsdklib.api.responses.ApiAppConfigResponse;
 import com.applivery.applvsdklib.api.responses.ServerResponse;
 import com.applivery.applvsdklib.utils.AppliveryTestApi;
 import retrofit.Call;

@@ -1,7 +1,7 @@
 package com.applivery.applvsdklib.doubles;
 
-import com.applivery.applvsdklib.api.interarctors.model.AppConfig;
-import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
+import com.applivery.applvsdklib.api.interactors.model.AppConfig;
+import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
 import com.applivery.applvsdklib.api.requests.ServerRequest;
 import com.applivery.applvsdklib.api.requests.mappers.BaseMapper;
 import com.applivery.applvsdklib.api.responses.ApiAppConfigResponse;

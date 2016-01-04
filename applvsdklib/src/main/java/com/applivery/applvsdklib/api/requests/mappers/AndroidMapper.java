@@ -1,6 +1,6 @@
 package com.applivery.applvsdklib.api.requests.mappers;
 
-import com.applivery.applvsdklib.api.interarctors.model.Android;
+import com.applivery.applvsdklib.api.interactors.model.Android;
 import com.applivery.applvsdklib.api.responses.model.ApiAndroid;
 
 /**

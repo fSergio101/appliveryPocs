@@ -1,10 +1,17 @@
 package com.applivery.applvsdklib;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 import com.applivery.applvsdklib.api.AppliveryApiService;
 import com.applivery.applvsdklib.api.AppliveryApiServiceBuilder;
+import com.applivery.applvsdklib.api.interactors.InteractorCallback;
+import com.applivery.applvsdklib.api.interactors.ObtainAppConfigInteractor;
+import com.applivery.applvsdklib.api.interactors.model.ErrorObject;
+import com.applivery.applvsdklib.tools.AppliveryActivityLifecycleCallbacks;
 import com.applivery.applvsdklib.tools.Validate;
+import com.applivery.applvsdklib.ui.ShowErrorAlert;
+import com.applivery.applvsdklib.ui.UpdateViewPresenter;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
@@ -25,7 +32,6 @@ public class AppliverySdk {
   private static volatile String appliveryDomain = APPLIVERY_COM;
   private static AtomicLong onProgressThreshold = new AtomicLong(65536);
   private static volatile boolean isDebugEnabled = BuildConfig.DEBUG;
-  private static boolean isLegacyTokenUpgradeSupported = false;
   private static Context applicationContext;
   private static final int DEFAULT_CORE_POOL_SIZE = 5;
   private static final int DEFAULT_MAXIMUM_POOL_SIZE = 128;
@@ -46,27 +52,36 @@ public class AppliverySdk {
   };
 
   private static Boolean sdkInitialized = false;
-  public static synchronized void sdkInitialize(Context applicationContext) {
+
+  public static synchronized void sdkInitialize(Application app,
+      String applicationId, String appClientToken) {
+
     if (sdkInitialized) {
+      obtainAppConfig();
       return;
     }
+    Context applicationContext = app.getApplicationContext();
 
     Validate.notNull(applicationContext, "applicationContext");
-
+    Validate.notNull(applicationContext.getApplicationContext(), "applicationContext");
     Validate.hasInternetPermissions(applicationContext, false);
+
+    app.registerActivityLifecycleCallbacks(new AppliveryActivityLifecycleCallbacks());
 
     AppliverySdk.applicationContext = applicationContext.getApplicationContext();
     AppliverySdk.appliveryApiService = AppliveryApiServiceBuilder.getAppliveryApiInstance();
 
-    //TODO Assign Access token and appID
-
-    getExecutor().execute(getObtainAppConfigRequestInstance());
+    AppliverySdk.applicationId = applicationId;
+    AppliverySdk.appClientToken = appClientToken;
 
     sdkInitialized = true;
   }
 
-  private static Runnable getObtainAppConfigRequestInstance() {
-    return null;
+  private static void obtainAppConfig() {
+    UpdateViewPresenter updateViewPresenter = new UpdateViewPresenter();
+    getExecutor().execute(ObtainAppConfigInteractor.getInstance(
+        appliveryApiService, AppliverySdk.applicationId, AppliverySdk.appClientToken,
+        updateViewPresenter.getAppConfigInteractorCallback()));
   }
 
   public static Executor getExecutor() {
@@ -93,10 +108,5 @@ public class AppliverySdk {
   public static synchronized boolean isInitialized() {
     return sdkInitialized;
   }
-
-
-
-
-
 
 }

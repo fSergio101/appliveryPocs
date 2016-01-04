@@ -1,9 +1,9 @@
 package com.applivery.applvsdklib;
 
 import com.applivery.applvsdklib.api.AppliveryApiService;
-import com.applivery.applvsdklib.api.interarctors.model.AppConfig;
-import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
-import com.applivery.applvsdklib.api.interarctors.model.Sdk;
+import com.applivery.applvsdklib.api.interactors.model.AppConfig;
+import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
+import com.applivery.applvsdklib.api.interactors.model.Sdk;
 import com.applivery.applvsdklib.api.requests.ObtainAppConfigRequest;
 import com.applivery.applvsdklib.api.requests.mappers.ApiAppConfigResponseMapper;
 import com.applivery.applvsdklib.api.requests.mappers.SdkMapper;
@@ -46,7 +46,7 @@ public class ObtainAppConfigTest {
   @Test public void requestTest(){
 
     ObtainAppConfigRequest obtainAppConfigRequest =
-        new ObtainAppConfigRequest(appliveryApiService, "test");
+        new ObtainAppConfigRequest(appliveryApiService, "test", "TEST_TOKEN");
 
     BusinessObject businessObject = obtainAppConfigRequest.execute();
 

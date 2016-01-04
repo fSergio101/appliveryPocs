@@ -1,4 +1,4 @@
-package com.applivery.applvsdklib.api.interarctors.model;
+package com.applivery.applvsdklib.api.interactors.model;
 
 import com.applivery.applvsdklib.api.responses.ApiAppliveryServerErrorResponse;
 
@@ -6,7 +6,7 @@ import com.applivery.applvsdklib.api.responses.ApiAppliveryServerErrorResponse;
  * Created by Sergio Martinez Rodriguez
  * Date 8/11/15.
  */
-public class ErrorObject implements BusinessObject{
+public class ErrorObject implements BusinessObject<ErrorObject>{
 
   private boolean isBusinessError;
   private String message;
@@ -16,5 +16,9 @@ public class ErrorObject implements BusinessObject{
     businessCode = serverResponse.getCode();
     message = serverResponse.getMsg();
     isBusinessError = serverResponse.isBusinessError();
+  }
+
+  @Override public ErrorObject getObject() {
+    return this;
   }
 }

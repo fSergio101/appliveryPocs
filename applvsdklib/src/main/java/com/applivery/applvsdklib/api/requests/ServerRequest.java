@@ -1,7 +1,7 @@
 package com.applivery.applvsdklib.api.requests;
 
-import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
-import com.applivery.applvsdklib.api.interarctors.model.ErrorObject;
+import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
+import com.applivery.applvsdklib.api.interactors.model.ErrorObject;
 import com.applivery.applvsdklib.api.responses.ApiAppliveryServerErrorResponse;
 import com.applivery.applvsdklib.api.responses.ServerResponse;
 import java.io.IOException;

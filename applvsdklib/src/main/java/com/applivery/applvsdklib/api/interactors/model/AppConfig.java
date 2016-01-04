@@ -1,4 +1,4 @@
-package com.applivery.applvsdklib.api.interarctors.model;
+package com.applivery.applvsdklib.api.interactors.model;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Sergio Martinez Rodriguez
  * Date 7/11/15.
  */
-public class AppConfig implements BusinessObject{
+public class AppConfig implements BusinessObject<AppConfig>{
 
   private String Id;
   private String name;
@@ -117,5 +117,9 @@ public class AppConfig implements BusinessObject{
 
   public void setFeedBackCount(int feedBackCount) {
     this.feedBackCount = feedBackCount;
+  }
+
+  @Override public AppConfig getObject() {
+    return this;
   }
 }

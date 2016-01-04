@@ -2,7 +2,7 @@ package com.applivery.applvsdklib;
 
 import com.applivery.applvsdklib.api.AppliveryApiService;
 import com.applivery.applvsdklib.api.AppliveryApiServiceBuilder;
-import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
+import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
 import com.applivery.applvsdklib.api.requests.RequestHttpException;
 import com.applivery.applvsdklib.api.responses.ApiAppliveryServerErrorResponse;
 import com.applivery.applvsdklib.api.responses.ServerResponse;

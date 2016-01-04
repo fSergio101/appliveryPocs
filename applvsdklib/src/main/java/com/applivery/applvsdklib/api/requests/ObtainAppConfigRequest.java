@@ -1,7 +1,7 @@
 package com.applivery.applvsdklib.api.requests;
 
 import com.applivery.applvsdklib.api.AppliveryApiService;
-import com.applivery.applvsdklib.api.interarctors.model.BusinessObject;
+import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
 import com.applivery.applvsdklib.api.requests.mappers.AndroidMapper;
 import com.applivery.applvsdklib.api.requests.mappers.ApiAppConfigResponseMapper;
 import com.applivery.applvsdklib.api.requests.mappers.SdkMapper;
@@ -14,13 +14,16 @@ import retrofit.Call;
  */
 public class ObtainAppConfigRequest extends ServerRequest {
 
-  private AppliveryApiService apiService;
-  private String appId;
-  private ApiAppConfigResponseMapper apiAppConfigResponseMapper;
+  private final AppliveryApiService apiService;
+  private final String appId;
+  private final String token;
+  private final ApiAppConfigResponseMapper apiAppConfigResponseMapper;
 
-  public ObtainAppConfigRequest(AppliveryApiService apiService, String appId) {
+  public ObtainAppConfigRequest(AppliveryApiService apiService, String appId, String token) {
     this.apiService = apiService;
     this.appId = appId;
+    this.token = token;
+
     SdkMapper sdkMapper = new SdkMapper(new AndroidMapper());
     this.apiAppConfigResponseMapper = new ApiAppConfigResponseMapper(sdkMapper);
   }

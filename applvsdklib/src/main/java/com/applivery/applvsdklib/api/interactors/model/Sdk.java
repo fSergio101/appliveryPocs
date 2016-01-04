@@ -1,4 +1,4 @@
-package com.applivery.applvsdklib.api.interarctors.model;
+package com.applivery.applvsdklib.api.interactors.model;
 
 /**
  * Created by Sergio Martinez Rodriguez
