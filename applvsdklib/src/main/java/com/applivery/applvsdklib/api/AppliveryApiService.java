@@ -2,7 +2,7 @@ package com.applivery.applvsdklib.api;
 
 import com.applivery.applvsdklib.api.requests.ApiFeedbackRequestData;
 import com.applivery.applvsdklib.api.responses.ApiAppConfigResponse;
-import com.applivery.applvsdklib.api.responses.ApiAppTokenResponse;
+import com.applivery.applvsdklib.api.responses.ApiBuildTokenResponse;
 import com.applivery.applvsdklib.api.responses.ApiFeedbackResponse;
 import com.squareup.okhttp.Response;
 import retrofit.Call;
@@ -20,11 +20,8 @@ public interface AppliveryApiService {
 
   @GET("/api/apps/{app_id}") Call<ApiAppConfigResponse> obtainAppConfig(@Path("app_id") String appId);
 
-  @POST("/api/bugs")
-  Call<ApiFeedbackResponse> sendFeedback(@Body ApiFeedbackRequestData bugRequest);
-
   @GET("/api/builds/{build_id}/token")
-  Call<ApiAppTokenResponse> obtainAppToken(@Path("build_id") String buildId);
+  Call<ApiBuildTokenResponse> obtainBuildToken(@Path("build_id") String buildId);
 
   @GET("/download/{build_id}/{download_token}")
   @Streaming
@@ -34,6 +31,10 @@ public interface AppliveryApiService {
   // http://stackoverflow.com/questions/32878478/how-to-download-file-in-android-using-retrofit-library
   // http://stackoverflow.com/questions/4604239/install-application-programmatically-on-android
   Call<Response> downloadBuild(@Path("build_id") String buildId, @Path("download_token") String download_token);
+
+  @POST("/api/bugs")
+  Call<ApiFeedbackResponse> sendFeedback(@Body ApiFeedbackRequestData bugRequest);
+
 
   //TODO this will be implemented in second phase
   //@POST("/api/crashes/")

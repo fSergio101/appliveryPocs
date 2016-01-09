@@ -35,4 +35,6 @@ public class ObtainAppConfigRequest extends ServerRequest {
     return businessObject;
   }
 
+
+
 }

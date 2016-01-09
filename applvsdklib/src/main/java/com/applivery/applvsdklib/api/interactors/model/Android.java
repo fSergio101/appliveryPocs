@@ -9,7 +9,10 @@ public class Android {
   private String minVersion;
   private String lastBuildId;
   private String lastBuildVersion;
-  private String storeLink;
+  private boolean ota;
+  private boolean forceUpdate;
+  private String updateMsg;
+  private String mustUpdateMsg;
 
   public String getMinVersion() {
     return minVersion;
@@ -35,11 +38,35 @@ public class Android {
     this.lastBuildVersion = lastBuildVersion;
   }
 
-  public String getStoreLink() {
-    return storeLink;
+  public boolean isOta() {
+    return ota;
   }
 
-  public void setStoreLink(String storeLink) {
-    this.storeLink = storeLink;
+  public void setOta(boolean ota) {
+    this.ota = ota;
+  }
+
+  public boolean isForceUpdate() {
+    return forceUpdate;
+  }
+
+  public void setForceUpdate(boolean forceUpdate) {
+    this.forceUpdate = forceUpdate;
+  }
+
+  public String getUpdateMsg() {
+    return updateMsg;
+  }
+
+  public void setUpdateMsg(String updateMsg) {
+    this.updateMsg = updateMsg;
+  }
+
+  public String getMustUpdateMsg() {
+    return mustUpdateMsg;
+  }
+
+  public void setMustUpdateMsg(String mustUpdateMsg) {
+    this.mustUpdateMsg = mustUpdateMsg;
   }
 }

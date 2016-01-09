@@ -53,6 +53,9 @@ public class AppliverySdk {
 
   private static Boolean sdkInitialized = false;
 
+  //Add boolean isPlayStoreRelease --> Add javadoc comment to this variable in order to explain
+  // what is and why
+
   public static synchronized void sdkInitialize(Application app,
       String applicationId, String appClientToken) {
 

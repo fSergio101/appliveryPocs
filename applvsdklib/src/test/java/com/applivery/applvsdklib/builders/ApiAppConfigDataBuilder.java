@@ -18,7 +18,6 @@ public class ApiAppConfigDataBuilder {
     public static final int SITES_COUNT = 10;
     public static final int TOTAL_DOWNLOADS_COUNT = 10;
     public static final int FEEDBACK_COUNT = 10;
-    public static final boolean ACTIVE = true;
     public static final String ID = "00293dscx09299";
     public static final String NAME = "Test App";
     public static final List<String> SO = new ArrayList<>(Arrays.asList("iOS", "Android"));
@@ -32,7 +31,6 @@ public class ApiAppConfigDataBuilder {
     public ApiAppConfigData build() {
         ApiAppConfigData apiAppConfigData = new ApiAppConfigData();
         apiAppConfigData.setBuildsCount(BUILDS_COUNT);
-        apiAppConfigData.setActive(ACTIVE);
         apiAppConfigData.setCrashesCount(CRASHES_COUNT);
         apiAppConfigData.setDescription(DESCRIPTION);
         apiAppConfigData.setFeedbackCount(FEEDBACK_COUNT);

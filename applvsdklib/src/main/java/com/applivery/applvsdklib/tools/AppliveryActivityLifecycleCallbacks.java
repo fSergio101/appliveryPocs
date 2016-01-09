@@ -9,6 +9,7 @@ import android.os.Bundle;
  * Date 4/1/16.
  */
 public class AppliveryActivityLifecycleCallbacks implements Application.ActivityLifecycleCallbacks{
+
   @Override public void onActivityCreated(Activity activity, Bundle savedInstanceState) {
 
   }

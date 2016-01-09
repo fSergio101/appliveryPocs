@@ -6,6 +6,7 @@ package com.applivery.applvsdklib.api.interactors;
  */
 public interface AppConfigInteractorCallback<Data> extends InteractorCallback<Data>{
 
-  void showForceUpdateDialog();
+  void showForceUpdateScreen();
+  void showAvailableUpdateDialog();
 
 }

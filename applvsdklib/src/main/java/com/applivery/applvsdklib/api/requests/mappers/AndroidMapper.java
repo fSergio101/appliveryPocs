@@ -14,7 +14,10 @@ public class AndroidMapper implements ResponseMapper<Android, ApiAndroid>{
     android.setLastBuildId(apiAndroid.getLastBuildId());
     android.setLastBuildVersion(apiAndroid.getLastBuildVersion());
     android.setMinVersion(apiAndroid.getMinVersion());
-    android.setStoreLink(apiAndroid.getStoreLink());
+    android.setForceUpdate(apiAndroid.isForceUpdate());
+    android.setMustUpdateMsg(apiAndroid.getMustUpdateMsg());
+    android.setOta(apiAndroid.isOta());
+    android.setUpdateMsg(apiAndroid.getUpdateMsg());
     return android;
   }
 }

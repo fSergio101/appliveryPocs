@@ -18,11 +18,6 @@ public class SdkMapper implements ResponseMapper<Sdk, ApiSdK>{
   @Override public Sdk dataToModel(ApiSdK apiSdK) {
     Sdk sdk = new Sdk();
     sdk.setAndroid(androidMapper.dataToModel(apiSdK.getAndroid()));
-    sdk.setForceUpdate(apiSdK.isForceUpdate());
-    sdk.setMustUpdateMsg(apiSdK.getMustUpdateMsg());
-    sdk.setOta(apiSdK.isOta());
-    sdk.setStoreRelease(apiSdK.isStoreRelease());
-    sdk.setUpdateMsg(apiSdK.getUpdateMsg());
     return sdk;
   }
 }

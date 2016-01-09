@@ -9,21 +9,13 @@ import com.google.gson.annotations.SerializedName;
  */
 public class ApiAndroid {
 
-  @SerializedName("minVersion")
-  @Expose
-  private String minVersion;
-
-  @SerializedName("lastBuildId")
-  @Expose
-  private String lastBuildId;
-
-  @SerializedName("lastBuildVersion")
-  @Expose
-  private String lastBuildVersion;
-
-  @SerializedName("storeLink")
-  @Expose
-  private String storeLink;
+  @SerializedName("minVersion") @Expose private String minVersion;
+  @SerializedName("lastBuildId") @Expose private String lastBuildId;
+  @SerializedName("lastBuildVersion") @Expose private String lastBuildVersion;
+  @SerializedName("updateMsg") @Expose private String updateMsg;
+  @SerializedName("mustUpdateMsg") @Expose private String mustUpdateMsg;
+  @SerializedName("forceUpdate") @Expose private boolean forceUpdate;
+  @SerializedName("ota") @Expose private boolean ota;
 
   public String getMinVersion() {
     return minVersion;
@@ -49,11 +41,35 @@ public class ApiAndroid {
     this.lastBuildVersion = lastBuildVersion;
   }
 
-  public String getStoreLink() {
-    return storeLink;
+  public String getUpdateMsg() {
+    return updateMsg;
   }
 
-  public void setStoreLink(String storeLink) {
-    this.storeLink = storeLink;
+  public void setUpdateMsg(String updateMsg) {
+    this.updateMsg = updateMsg;
+  }
+
+  public String getMustUpdateMsg() {
+    return mustUpdateMsg;
+  }
+
+  public void setMustUpdateMsg(String mustUpdateMsg) {
+    this.mustUpdateMsg = mustUpdateMsg;
+  }
+
+  public boolean isForceUpdate() {
+    return forceUpdate;
+  }
+
+  public void setForceUpdate(boolean forceUpdate) {
+    this.forceUpdate = forceUpdate;
+  }
+
+  public boolean isOta() {
+    return ota;
+  }
+
+  public void setOta(boolean ota) {
+    this.ota = ota;
   }
 }

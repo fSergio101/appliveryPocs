@@ -16,12 +16,6 @@ public class ApiAppConfigData {
   @SerializedName("name")
   @Expose
   private String name;
-  @SerializedName("owner")
-  @Expose
-  private ApiOwner owner;
-  @SerializedName("creator")
-  @Expose
-  private ApiCreator creator;
   @SerializedName("sdk")
   @Expose
   private ApiSdK sdk;
@@ -40,18 +34,6 @@ public class ApiAppConfigData {
   @SerializedName("buildsCount")
   @Expose
   private int buildsCount;
-  @SerializedName("invited")
-  @Expose
-  private List<ApiMember> invited;
-  @SerializedName("teams")
-  @Expose
-  private List<ApiTeam> teams;
-  @SerializedName("members")
-  @Expose
-  private List<ApiMember> members;
-  @SerializedName("active")
-  @Expose
-  private boolean active;
   @SerializedName("modified")
   @Expose
   private String modified;
@@ -79,22 +61,6 @@ public class ApiAppConfigData {
 
   public void setName(String name) {
     this.name = name;
-  }
-
-  public ApiOwner getOwner() {
-    return owner;
-  }
-
-  public void setOwner(ApiOwner owner) {
-    this.owner = owner;
-  }
-
-  public ApiCreator getCreator() {
-    return creator;
-  }
-
-  public void setCreator(ApiCreator creator) {
-    this.creator = creator;
   }
 
   public ApiSdK getSdk() {
@@ -143,38 +109,6 @@ public class ApiAppConfigData {
 
   public void setBuildsCount(int buildsCount) {
     this.buildsCount = buildsCount;
-  }
-
-  public List<ApiMember> getInvited() {
-    return invited;
-  }
-
-  public void setInvited(List<ApiMember> invited) {
-    this.invited = invited;
-  }
-
-  public List<ApiTeam> getTeams() {
-    return teams;
-  }
-
-  public void setTeams(List<ApiTeam> teams) {
-    this.teams = teams;
-  }
-
-  public List<ApiMember> getMembers() {
-    return members;
-  }
-
-  public void setMembers(List<ApiMember> members) {
-    this.members = members;
-  }
-
-  public boolean isActive() {
-    return active;
-  }
-
-  public void setActive(boolean active) {
-    this.active = active;
   }
 
   public String getModified() {
