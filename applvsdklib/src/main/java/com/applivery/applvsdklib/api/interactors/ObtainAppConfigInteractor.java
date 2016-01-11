@@ -13,12 +13,12 @@ import com.applivery.applvsdklib.api.requests.ObtainAppConfigRequest;
 public class ObtainAppConfigInteractor extends BaseInteractor<AppConfig> {
 
   private final ObtainAppConfigRequest obtainAppConfigRequest;
-  private final AppConfigInteractorCallback appConfigInteractorCallback;
+  private final InteractorCallback appConfigInteractorCallback;
 
-  public ObtainAppConfigInteractor(AppliveryApiService apiService, String appId,
-      String authToken, AppConfigInteractorCallback appConfigInteractorCallback) {
+  public ObtainAppConfigInteractor(AppliveryApiService apiService, String appId, String authToken,
+      CurrentAppInfo currentAppInfo) {
     this.obtainAppConfigRequest = new ObtainAppConfigRequest(apiService, appId, authToken);
-    this.appConfigInteractorCallback = appConfigInteractorCallback;
+    this.appConfigInteractorCallback = new ObtainAppConfigInteractorCallback(apiService, currentAppInfo);
   }
 
   @Override protected void receivedResponse(AppConfig obj) {
@@ -30,7 +30,7 @@ public class ObtainAppConfigInteractor extends BaseInteractor<AppConfig> {
   }
 
   @Override protected void success(AppConfig appConfig) {
-    //TODO implement BusinessLogic
+    appConfigInteractorCallback.onSuccess(appConfig);
   }
 
   @Override protected BusinessObject performRequest() {
@@ -38,11 +38,12 @@ public class ObtainAppConfigInteractor extends BaseInteractor<AppConfig> {
   }
 
   public static Runnable getInstance(AppliveryApiService appliveryApiService, String applicationId,
-      String authToken, AppConfigInteractorCallback appConfigInteractorCallback) {
+      String authToken, CurrentAppInfo currentAppInfo) {
 
     ObtainAppConfigInteractor obtainAppConfigInteractor = new ObtainAppConfigInteractor(
-        appliveryApiService, applicationId, authToken, appConfigInteractorCallback);
+        appliveryApiService, applicationId, authToken, currentAppInfo);
 
     return obtainAppConfigInteractor;
   }
+
 }

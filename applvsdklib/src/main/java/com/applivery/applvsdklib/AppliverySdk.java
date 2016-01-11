@@ -3,18 +3,15 @@ package com.applivery.applvsdklib;
 import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
+import android.util.Log;
 import com.applivery.applvsdklib.api.AppliveryApiService;
 import com.applivery.applvsdklib.api.AppliveryApiServiceBuilder;
-import com.applivery.applvsdklib.api.interactors.InteractorCallback;
 import com.applivery.applvsdklib.api.interactors.ObtainAppConfigInteractor;
-import com.applivery.applvsdklib.api.interactors.model.ErrorObject;
+import com.applivery.applvsdklib.tools.AndroidCurrentAppInfo;
 import com.applivery.applvsdklib.tools.AppliveryActivityLifecycleCallbacks;
 import com.applivery.applvsdklib.tools.Validate;
-import com.applivery.applvsdklib.ui.ShowErrorAlert;
-import com.applivery.applvsdklib.ui.UpdateViewPresenter;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * Created by Sergio Martinez Rodriguez
@@ -25,17 +22,16 @@ public class AppliverySdk {
   private static final String TAG = AppliverySdk.class.getCanonicalName();
   private static volatile Executor executor;
   private static volatile String applicationId;
-  private static volatile String applicationName;
   private static volatile String appClientToken;
+  private static boolean isPlayStoreRelease = false;
   private static volatile AppliveryApiService appliveryApiService;
   private static final String APPLIVERY_COM = "applivery.com";
-  private static volatile String appliveryDomain = APPLIVERY_COM;
-  private static AtomicLong onProgressThreshold = new AtomicLong(65536);
   private static volatile boolean isDebugEnabled = BuildConfig.DEBUG;
   private static Context applicationContext;
+  private static AppliveryActivityLifecycleCallbacks activityLifecycle;
   private static final int DEFAULT_CORE_POOL_SIZE = 5;
   private static final int DEFAULT_MAXIMUM_POOL_SIZE = 128;
-  private static final int DEFAULT_KEEP_ALIVE = 1;;
+  private static final int DEFAULT_KEEP_ALIVE = 1;
   private static final Object LOCK = new Object();
 
   private static final int MAX_REQUEST_CODE_RANGE = 100;
@@ -57,9 +53,13 @@ public class AppliverySdk {
   // what is and why
 
   public static synchronized void sdkInitialize(Application app,
-      String applicationId, String appClientToken) {
+      String applicationId, String appClientToken, boolean isPlayStoreRelease) {
 
-    if (sdkInitialized) {
+    //TODO refactor entire Method and review carefully this class
+
+    AppliverySdk.isPlayStoreRelease = isPlayStoreRelease;
+
+    if (sdkInitialized && !isPlayStoreRelease) {
       obtainAppConfig();
       return;
     }
@@ -69,7 +69,8 @@ public class AppliverySdk {
     Validate.notNull(applicationContext.getApplicationContext(), "applicationContext");
     Validate.hasInternetPermissions(applicationContext, false);
 
-    app.registerActivityLifecycleCallbacks(new AppliveryActivityLifecycleCallbacks());
+    activityLifecycle = new AppliveryActivityLifecycleCallbacks();
+    app.registerActivityLifecycleCallbacks(activityLifecycle);
 
     AppliverySdk.applicationContext = applicationContext.getApplicationContext();
     AppliverySdk.appliveryApiService = AppliveryApiServiceBuilder.getAppliveryApiInstance();
@@ -81,10 +82,9 @@ public class AppliverySdk {
   }
 
   private static void obtainAppConfig() {
-    UpdateViewPresenter updateViewPresenter = new UpdateViewPresenter();
-    getExecutor().execute(ObtainAppConfigInteractor.getInstance(
-        appliveryApiService, AppliverySdk.applicationId, AppliverySdk.appClientToken,
-        updateViewPresenter.getAppConfigInteractorCallback()));
+    getExecutor().execute(ObtainAppConfigInteractor.getInstance(appliveryApiService,
+        AppliverySdk.applicationId, AppliverySdk.appClientToken,
+        new AndroidCurrentAppInfo(applicationContext)));
   }
 
   public static Executor getExecutor() {
@@ -112,4 +112,28 @@ public class AppliverySdk {
     return sdkInitialized;
   }
 
+  public static Context getCurrentActivity() {
+    return activityLifecycle.getCurrentActivity();
+  }
+
+  public static void obtainAppConfigForCheckUpdates() {
+    obtainAppConfig();
+  }
+
+  public static String getToken() {
+    return appClientToken;
+  }
+
+  public static boolean isStoreRelease() {
+    return isPlayStoreRelease;
+  }
+
+  public static class Logger {
+    private static volatile boolean debug = isDebugEnabled;
+    public static void log(String text){
+      if (debug){
+        Log.d(TAG, text);
+      }
+    }
+  }
 }

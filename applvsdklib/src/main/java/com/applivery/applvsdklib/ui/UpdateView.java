@@ -5,6 +5,9 @@ package com.applivery.applvsdklib.ui;
  * Date 3/1/16.
  */
 public interface UpdateView {
-  void showForceUpdateDialog();
+  void showUpdateDialog();
 
+  void hideDownloadInProgress();
+
+  void showDownloadInProgress();
 }

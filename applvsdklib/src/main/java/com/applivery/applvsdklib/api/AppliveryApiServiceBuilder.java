@@ -17,6 +17,7 @@ public class AppliveryApiServiceBuilder {
     HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
 
     OkHttpClient okHttpClient = new OkHttpClient();
+    okHttpClient.interceptors().add(new HeadersInterceptor());
     if (BuildConfig.DEBUG){ okHttpClient.interceptors().add(loggingInterceptor);}
 
     return new Retrofit.Builder().baseUrl(BuildConfig.API_URL)
