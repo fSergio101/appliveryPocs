@@ -1,7 +1,7 @@
 package com.applivery.applvsdklib;
 
-import com.applivery.applvsdklib.exceptions.AppliverySdkNotInitializedException;
-import com.applivery.applvsdklib.tools.Validate;
+import com.applivery.applvsdklib.domain.exceptions.AppliverySdkNotInitializedException;
+import com.applivery.applvsdklib.tools.utils.Validate;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;

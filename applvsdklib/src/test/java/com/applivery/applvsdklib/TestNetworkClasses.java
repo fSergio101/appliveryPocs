@@ -1,12 +1,12 @@
 package com.applivery.applvsdklib;
 
-import com.applivery.applvsdklib.api.AppliveryApiService;
-import com.applivery.applvsdklib.api.AppliveryApiServiceBuilder;
-import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
-import com.applivery.applvsdklib.api.requests.RequestHttpException;
-import com.applivery.applvsdklib.api.responses.ApiAppliveryServerErrorResponse;
-import com.applivery.applvsdklib.api.responses.ServerResponse;
-import com.applivery.applvsdklib.api.responses.model.ApiAppConfigData;
+import com.applivery.applvsdklib.network.api.AppliveryApiService;
+import com.applivery.applvsdklib.network.api.AppliveryApiServiceBuilder;
+import com.applivery.applvsdklib.domain.model.BusinessObject;
+import com.applivery.applvsdklib.network.api.requests.RequestHttpException;
+import com.applivery.applvsdklib.network.api.responses.ApiAppliveryServerErrorResponse;
+import com.applivery.applvsdklib.network.api.responses.ServerResponse;
+import com.applivery.applvsdklib.network.api.model.ApiAppConfigData;
 import com.applivery.applvsdklib.doubles.MockRequest;
 import com.applivery.applvsdklib.doubles.MockRequestExecute;
 import com.applivery.applvsdklib.utils.AppliveryTestApi;

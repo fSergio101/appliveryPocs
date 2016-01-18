@@ -1,14 +1,14 @@
 package com.applivery.applvsdklib;
 
-import com.applivery.applvsdklib.api.AppliveryApiService;
-import com.applivery.applvsdklib.api.interactors.model.AppConfig;
-import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
-import com.applivery.applvsdklib.api.interactors.model.Sdk;
-import com.applivery.applvsdklib.api.requests.ObtainAppConfigRequest;
-import com.applivery.applvsdklib.api.requests.mappers.ApiAppConfigResponseMapper;
-import com.applivery.applvsdklib.api.requests.mappers.SdkMapper;
-import com.applivery.applvsdklib.api.responses.ApiAppConfigResponse;
-import com.applivery.applvsdklib.api.responses.model.ApiSdK;
+import com.applivery.applvsdklib.network.api.AppliveryApiService;
+import com.applivery.applvsdklib.domain.model.AppConfig;
+import com.applivery.applvsdklib.domain.model.BusinessObject;
+import com.applivery.applvsdklib.domain.model.Sdk;
+import com.applivery.applvsdklib.network.api.requests.ObtainAppConfigRequest;
+import com.applivery.applvsdklib.network.api.requests.mappers.ApiAppConfigResponseMapper;
+import com.applivery.applvsdklib.network.api.requests.mappers.SdkMapper;
+import com.applivery.applvsdklib.network.api.responses.ApiAppConfigResponse;
+import com.applivery.applvsdklib.network.api.model.ApiSdK;
 import com.applivery.applvsdklib.builders.ApiAppConfigDataBuilder;
 import com.applivery.applvsdklib.utils.MockAppliveryInstance;
 

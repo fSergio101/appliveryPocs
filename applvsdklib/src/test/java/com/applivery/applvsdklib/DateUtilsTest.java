@@ -1,7 +1,7 @@
 package com.applivery.applvsdklib;
 
 import com.applivery.applvsdklib.matchers.IsDateEqualTo;
-import com.applivery.applvsdklib.tools.DateUtils;
+import com.applivery.applvsdklib.tools.utils.DateUtils;
 import java.util.Calendar;
 import java.util.Date;
 import org.junit.Test;

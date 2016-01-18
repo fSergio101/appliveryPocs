@@ -1,6 +1,6 @@
 package com.applivery.applvsdklib.utils;
 
-import com.applivery.applvsdklib.api.responses.ApiAppConfigResponse;
+import com.applivery.applvsdklib.network.api.responses.ApiAppConfigResponse;
 import retrofit.Call;
 import retrofit.http.GET;
 import retrofit.http.Path;

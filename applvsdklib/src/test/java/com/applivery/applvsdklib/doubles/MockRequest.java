@@ -1,8 +1,8 @@
 package com.applivery.applvsdklib.doubles;
 
-import com.applivery.applvsdklib.api.interactors.model.BusinessObject;
-import com.applivery.applvsdklib.api.requests.ServerRequest;
-import com.applivery.applvsdklib.api.responses.ServerResponse;
+import com.applivery.applvsdklib.domain.model.BusinessObject;
+import com.applivery.applvsdklib.network.api.requests.ServerRequest;
+import com.applivery.applvsdklib.network.api.responses.ServerResponse;
 import com.applivery.applvsdklib.utils.AppliveryTestApi;
 import retrofit.Call;
 

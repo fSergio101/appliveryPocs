@@ -1,6 +1,6 @@
 package com.applivery.applvsdklib.utils;
 
-import com.applivery.applvsdklib.api.AppliveryApiService;
+import com.applivery.applvsdklib.network.api.AppliveryApiService;
 import com.squareup.okhttp.mockwebserver.Dispatcher;
 import com.squareup.okhttp.mockwebserver.MockResponse;
 import com.squareup.okhttp.mockwebserver.MockWebServer;
