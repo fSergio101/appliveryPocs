@@ -14,6 +14,8 @@ import retrofit.Call;
  */
 public class FeedbackRequest extends ServerRequest {
 
+  //TODO next release stuff
+
   private final AppliveryApiService apiService;
   private final FeedbackWrapper feedbackWrapper;
   private final ApiFeedbackRequestMapper apiFeedbackRequestMapper;

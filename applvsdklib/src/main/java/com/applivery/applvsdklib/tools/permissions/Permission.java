@@ -7,8 +7,6 @@ package com.applivery.applvsdklib.tools.permissions;
 public interface Permission {
   String getAndroidPermissionStringType();
 
-  int getPermissionAllowedFeedback();
-
   int getPermissionSettingsDeniedFeedback();
 
   int getPermissionDeniedFeedback();

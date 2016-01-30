@@ -8,23 +8,19 @@ import com.applivery.applvsdklib.R;
  */
 public class ContinueRequestPermissionListenerImpl extends AbstractPermissionListener{
 
-  @Override public int getPermissionAllowedFeedBack() {
-    return R.string.continueRequestPermissionAllowedFeedback;
+  public ContinueRequestPermissionListenerImpl(ContextProvider contextProvider) {
+    super(contextProvider);
   }
 
-  @Override protected int getPermissionSettingsDeniedFeedback() {
-    return R.string.continueRequestPermissionSettingsDeniedFeedback;
-  }
-
-  @Override protected int getPermissionDeniedFeedback() {
+  @Override public int getPermissionDeniedFeedback() {
     return R.string.continueRequestPermissionDeniedFeedback;
   }
 
-  @Override protected int getPermissionRationaleMessage() {
+  @Override public int getPermissionRationaleMessage() {
     return R.string.continueRequestPermissionRationaleMessage;
   }
 
-  @Override protected int getPermissionRationaleTitle() {
+  @Override public int getPermissionRationaleTitle() {
     return R.string.continueRequestPermissionRationaleTitle;
   }
 }

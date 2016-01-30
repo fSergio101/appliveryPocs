@@ -1,18 +1,27 @@
 package com.applivery.applvsdklib;
 
+import android.content.Context;
 import com.applivery.applvsdklib.domain.exceptions.AppliverySdkNotInitializedException;
 import com.applivery.applvsdklib.tools.utils.Validate;
 import java.util.ArrayList;
 import java.util.List;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.when;
+import static org.mockito.Matchers.*;
 
 /**
  * Created by Sergio Martinez Rodriguez
  * Date 25/12/15.
  */
+@RunWith(MockitoJUnitRunner.class)
 public class ValidateUtilsTest {
+
+  @Mock Context context;
 
   //region notNull
   @Test(expected = NullPointerException.class)
@@ -132,6 +141,28 @@ public class ValidateUtilsTest {
     Validate.hasInternetPermissions(null);
   }
   //endregion
+
+
+  @Test(expected = IllegalStateException.class)
+  public void shouldThrowExceptionCheckInternetPermissionsWithContextNotNullAndNoPermission() throws Exception {
+    when(context.checkCallingOrSelfPermission(isA(String.class))).thenReturn(-1);
+    Validate.hasInternetPermissions(context);
+  }
+
+  @Test
+  public void shouldNotThrowExceptionCheckInternetPermissionsWithContextNotNullAndNoPermissionButFlagDisabled(){
+    when(context.checkCallingOrSelfPermission(isA(String.class))).thenReturn(-1);
+    Validate.hasInternetPermissions(context, false);
+    assertTrue(true);
+  }
+
+  @Test
+  public void tryCheckInternetPermissionsWithContextAndPermission() {
+    when(context.checkCallingOrSelfPermission(isA(String.class))).thenReturn(1);
+    Validate.hasInternetPermissions(context);
+    assertTrue(true);
+  }
+
 
 
 }

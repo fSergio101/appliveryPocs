@@ -33,14 +33,20 @@ public class ObtainBuildTokenInteractorCallback implements InteractorCallback<Bu
     AppliverySdk.getPermissionRequestManager().askForPermission(new WriteExternalPermission(),
         new UserPermissionRequestResponseListener() {
           @Override public void onPermissionAllowed(boolean permissionAllowed) {
-            updateView.showDownloadInProgress();
-            InteractorCallback interactorCallback = new DownloadBuildInteractorCallback(updateView);
-            Runnable r = DownloadBuildInteractor.getInstance(apiService, appName, buildTokenInfo,
-                interactorCallback);
+            if (permissionAllowed){
 
-            AppliverySdk.getExecutor().execute(r);
+              updateView.showDownloadInProgress();
+
+              InteractorCallback interactorCallback = new DownloadBuildInteractorCallback(updateView);
+              Runnable r = DownloadBuildInteractor.getInstance(apiService, appName, buildTokenInfo,
+                  interactorCallback);
+
+              AppliverySdk.getExecutor().execute(r);
+            }else{
+              updateView.hideDownloadInProgress();
+            }
           }
-        });
+        }, AppliverySdk.getCurrentActivity());
   }
 
   @Override public void onError(ErrorObject error) {

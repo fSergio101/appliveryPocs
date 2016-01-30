@@ -6,6 +6,6 @@ package com.applivery.applvsdklib.network.api.requests;
  */
 public class ApiFeedbackRequestData {
 
-
+  //TODO next release stuff
 
 }

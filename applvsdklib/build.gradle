@@ -24,6 +24,10 @@ android {
 //      buildConfigField STRING, "API_URL", '"https://dashboard.applivery.com"'
     }
   }
+
+  testOptions {
+    unitTests.returnDefaultValues = true
+  }
 }
 
 dependencies {

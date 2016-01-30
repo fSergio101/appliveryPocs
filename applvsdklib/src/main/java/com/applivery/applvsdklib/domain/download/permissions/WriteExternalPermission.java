@@ -14,10 +14,6 @@ public class WriteExternalPermission implements Permission {
     return  Manifest.permission.WRITE_EXTERNAL_STORAGE;
   }
 
-  @Override public int getPermissionAllowedFeedback() {
-    return R.string.writeOnExternalPermissionAllowedFeedback;
-  }
-
   @Override public int getPermissionSettingsDeniedFeedback() {
     return R.string.writeOnExternalPermissionSettingsDeniedFeedback;
   }

@@ -1,8 +1,6 @@
 package com.applivery.applvsdklib.tools.permissions;
 
-import android.app.Activity;
 import android.content.Context;
-import com.applivery.applvsdklib.AppliverySdk;
 import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionDeniedResponse;
 import com.karumi.dexter.listener.PermissionGrantedResponse;
@@ -16,31 +14,27 @@ import com.karumi.dexter.listener.single.PermissionListener;
 public abstract class AbstractPermissionListener implements PermissionListener {
 
   private UserPermissionRequestResponseListener userPermissionRequestResponseListener;
+  private ContextProvider contextProvider;
 
-  public AbstractPermissionListener() {}
+  public AbstractPermissionListener(ContextProvider contextProvider) {
+    this.contextProvider = contextProvider;
+  }
 
   public AbstractPermissionListener(UserPermissionRequestResponseListener
-      userPermissionRequestResponseListener) {
+      userPermissionRequestResponseListener, ContextProvider contextProvider) {
     this.userPermissionRequestResponseListener = userPermissionRequestResponseListener;
+    this.contextProvider = contextProvider;
   }
 
   @Override public void onPermissionGranted(PermissionGrantedResponse response) {
-    PermissionsUIViews.showPermissionToast(AppliverySdk.getApplicationContext(),
-        getPermissionAllowedFeedBack());
-
     if (userPermissionRequestResponseListener!=null){
       userPermissionRequestResponseListener.onPermissionAllowed(true);
     }
   }
 
   @Override public void onPermissionDenied(PermissionDeniedResponse response) {
-    if (AppliverySdk.isContextAvailable()){
-      Activity activity = AppliverySdk.getCurrentActivity();
-      PermissionsUIViews.showSnackBarPermissionMessage(activity,
-          getPermissionRationaleMessage(),
-          getPermissionSettingsDeniedFeedback());
-    }else{
-      PermissionsUIViews.showPermissionToast(AppliverySdk.getApplicationContext(),
+    if (!contextProvider.isActivityContextAvailable()){
+        PermissionsUIViews.showPermissionToast(contextProvider.getApplicationContext(),
           getPermissionDeniedFeedback());
     }
 
@@ -53,8 +47,8 @@ public abstract class AbstractPermissionListener implements PermissionListener {
   @Override public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest,
       PermissionToken token) {
 
-    if (AppliverySdk.isContextAvailable()){
-      Context context = AppliverySdk.getCurrentActivity();
+    if (contextProvider.isActivityContextAvailable()){
+      Context context = contextProvider.getCurrentActivity();
       PermissionsUIViews.showRationaleView(createRationaleResponseInstance(token), context,
           getPermissionRationaleTitle(), getPermissionRationaleMessage());
     }
@@ -72,10 +66,8 @@ public abstract class AbstractPermissionListener implements PermissionListener {
       };
     }
 
-  public abstract int getPermissionAllowedFeedBack();
-  protected abstract int getPermissionSettingsDeniedFeedback();
-  protected abstract int getPermissionDeniedFeedback();
-  protected abstract int getPermissionRationaleMessage();
-  protected abstract int getPermissionRationaleTitle();
+  public abstract int getPermissionDeniedFeedback();
+  public abstract int getPermissionRationaleMessage();
+  public abstract int getPermissionRationaleTitle();
 
   }

@@ -12,6 +12,7 @@ public class ApiFeedbackRequestMapper implements RequestMapper<FeedbackWrapper, 
   @Override public ApiFeedbackRequestData modelToData(FeedbackWrapper feedbackWrapper) {
     ApiFeedbackRequestData apiFeedbackData = new ApiFeedbackRequestData();
     //TODO implement mapping of fields
+    //TODO next release stuff
     return apiFeedbackData;
   }
 }

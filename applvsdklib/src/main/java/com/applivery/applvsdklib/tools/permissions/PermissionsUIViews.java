@@ -42,11 +42,11 @@ public class PermissionsUIViews {
     Toast.makeText(context, stringId, Toast.LENGTH_LONG).show();
   }
 
-  public static void showSnackBarPermissionMessage(Activity activity,
-      int permissiondeniedFeedbackStringId, int permissionRationaleSettingsStringId){
-    ViewGroup rootView = (ViewGroup) activity.findViewById(android.R.id.content);
-    SnackbarOnDeniedPermissionListener.Builder.with(rootView, permissiondeniedFeedbackStringId)
-        .withOpenSettingsButton(permissionRationaleSettingsStringId)
-        .build();
+  public static ViewGroup getAppContainer(Activity activity) throws NullContainerException{
+    if (activity!=null){
+      return (ViewGroup) activity.findViewById(android.R.id.content);
+    }else{
+      throw new NullContainerException("Container is null");
+    }
   }
 }

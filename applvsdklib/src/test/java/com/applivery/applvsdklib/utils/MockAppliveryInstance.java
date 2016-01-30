@@ -46,6 +46,12 @@ public class MockAppliveryInstance {
           } else if (request.getPath().equals("/api/apps/bad")) {
             return new MockResponse().setResponseCode(ERROR_RESPONSE_CODE).setBody(
                 TestUtils.getContentFromFile("testBadHttp.json", this));
+          } else if (request.getPath().equals("/api/builds/1/token")) {
+            return new MockResponse().setResponseCode(200).setBody(
+                TestUtils.getContentFromFile("testOkBuildToken.json", this));
+          } else if (request.getPath().equals("/download/1/manifest/2")) {
+            return new MockResponse().setResponseCode(200).setBody(
+                TestUtils.getContentFromFile("testOkBuild.json", this));
           }else{
             return null;
           }

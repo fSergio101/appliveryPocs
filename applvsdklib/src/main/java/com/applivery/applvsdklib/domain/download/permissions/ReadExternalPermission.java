@@ -13,10 +13,6 @@ public class ReadExternalPermission implements Permission {
     return Manifest.permission.READ_EXTERNAL_STORAGE;
   }
 
-  @Override public int getPermissionAllowedFeedback() {
-    return R.string.readOnExternalPermissionAllowedFeedback;
-  }
-
   @Override public int getPermissionSettingsDeniedFeedback() {
     return R.string.readOnExternalPermissionSettingsDeniedFeedback;
   }

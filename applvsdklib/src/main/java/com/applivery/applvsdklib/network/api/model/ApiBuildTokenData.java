@@ -11,7 +11,6 @@ public class ApiBuildTokenData {
 
   @SerializedName("token") @Expose private String token;
   @SerializedName("build") @Expose private String build;
-  @SerializedName("member") @Expose private String member;
   @SerializedName("exp") @Expose private long exp;
 
   public String getToken() {
@@ -28,14 +27,6 @@ public class ApiBuildTokenData {
 
   public void setBuild(String build) {
     this.build = build;
-  }
-
-  public String getMember() {
-    return member;
-  }
-
-  public void setMember(String member) {
-    this.member = member;
   }
 
   public long getExp() {

@@ -9,28 +9,21 @@ public class GenericPermissionListenerImpl extends AbstractPermissionListener{
   private final Permission permission;
 
   public GenericPermissionListenerImpl(Permission permission,
-      UserPermissionRequestResponseListener userPermissionRequestResponseListener) {
-    super(userPermissionRequestResponseListener);
+      UserPermissionRequestResponseListener userPermissionRequestResponseListener,
+      ContextProvider contextProvider) {
+    super(userPermissionRequestResponseListener, contextProvider);
     this.permission = permission;
   }
 
-  @Override public int getPermissionAllowedFeedBack() {
-    return permission.getPermissionAllowedFeedback();
-  }
-
-  @Override protected int getPermissionSettingsDeniedFeedback() {
-    return permission.getPermissionSettingsDeniedFeedback();
-  }
-
-  @Override protected int getPermissionDeniedFeedback() {
+  @Override public int getPermissionDeniedFeedback() {
     return permission.getPermissionDeniedFeedback();
   }
 
-  @Override protected int getPermissionRationaleMessage() {
+  @Override public int getPermissionRationaleMessage() {
     return permission.getPermissionRationaleMessage();
   }
 
-  @Override protected int getPermissionRationaleTitle() {
+  @Override public int getPermissionRationaleTitle() {
     return permission.getPermissionRationaleTitle();
   }
 }

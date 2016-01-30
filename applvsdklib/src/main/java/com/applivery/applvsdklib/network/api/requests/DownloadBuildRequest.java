@@ -5,9 +5,7 @@ import com.applivery.applvsdklib.domain.model.BuildTokenInfo;
 import com.applivery.applvsdklib.domain.model.BusinessObject;
 import com.applivery.applvsdklib.domain.model.DownloadResult;
 import com.applivery.applvsdklib.tools.androidimplementations.AndroidExternalStorageWriterImpl;
-import com.squareup.okhttp.Response;
 import com.squareup.okhttp.ResponseBody;
-import java.io.IOException;
 import java.io.InputStream;
 import retrofit.Call;
 
@@ -24,9 +22,9 @@ public class DownloadBuildRequest extends ServerRequest {
   private final String appName;
 
   public DownloadBuildRequest(AppliveryApiService apiService, BuildTokenInfo token, String appName,
-      DownloadStatusListener downloadStatusListener) {
+      DownloadStatusListener downloadStatusListener, ExternalStorageWriter externalStorageWriter) {
 
-    this.externalStorageWriter = new AndroidExternalStorageWriterImpl();
+    this.externalStorageWriter = externalStorageWriter;
 
     this.downloadStatusListener = downloadStatusListener;
     this.apiService = apiService;
@@ -41,9 +39,6 @@ public class DownloadBuildRequest extends ServerRequest {
 
     try {
       retrofit.Response<ResponseBody> apiResponse = response.execute();
-
-      //becareful because body and headers can be from retrofit.Response that is the wrapper of
-      //okHttpResponse of the oposite
 
       int lenght = Integer.parseInt(apiResponse.headers().get("Content-Length"));
       InputStream in = apiResponse.body().byteStream();

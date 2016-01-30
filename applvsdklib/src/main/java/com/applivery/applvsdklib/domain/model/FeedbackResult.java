@@ -6,6 +6,8 @@ package com.applivery.applvsdklib.domain.model;
  */
 public class FeedbackResult implements BusinessObject<FeedbackResult>{
 
+  //TODO next release stuff
+
   private boolean success = false;
 
   public FeedbackResult(boolean status) {

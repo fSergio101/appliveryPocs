@@ -11,7 +11,9 @@ import com.applivery.applvsdklib.domain.model.ErrorObject;
 import com.applivery.applvsdklib.domain.download.permissions.ReadExternalPermission;
 import com.applivery.applvsdklib.network.api.requests.DownloadBuildRequest;
 import com.applivery.applvsdklib.network.api.requests.DownloadStatusListener;
+import com.applivery.applvsdklib.network.api.requests.ExternalStorageWriter;
 import com.applivery.applvsdklib.tools.androidimplementations.AndroidAppInstallerImpl;
+import com.applivery.applvsdklib.tools.androidimplementations.AndroidExternalStorageWriterImpl;
 import com.applivery.applvsdklib.tools.permissions.PermissionChecker;
 import com.applivery.applvsdklib.tools.permissions.UserPermissionRequestResponseListener;
 
@@ -28,7 +30,8 @@ public class DownloadBuildInteractor extends BaseInteractor<DownloadResult> {
   private final PermissionChecker permissionRequestExecutor;
 
   public DownloadBuildInteractor(AppliveryApiService appliveryApiService, String appName,
-      BuildTokenInfo buildTokenInfo, final InteractorCallback interactorCallback) {
+      BuildTokenInfo buildTokenInfo, final InteractorCallback interactorCallback,
+      ExternalStorageWriter externalStorageWriter) {
 
     this.downloadStatusListener = new DownloadStatusListener() {
       @Override public void updateDownloadPercentStatus(double percent) {
@@ -38,7 +41,7 @@ public class DownloadBuildInteractor extends BaseInteractor<DownloadResult> {
 
     this.downloadBuildRequest =
         new DownloadBuildRequest(appliveryApiService, buildTokenInfo, appName,
-            downloadStatusListener);
+            downloadStatusListener, externalStorageWriter);
     this.interactorCallback = interactorCallback;
     this.appInstaller = new AndroidAppInstallerImpl(AppliverySdk.getApplicationContext());
     this.permissionRequestExecutor = AppliverySdk.getPermissionRequestManager();
@@ -62,7 +65,7 @@ public class DownloadBuildInteractor extends BaseInteractor<DownloadResult> {
               appInstaller.installApp(response.getPath());
             }
           }
-        });
+        }, AppliverySdk.getCurrentActivity());
   }
 
   @Override protected BusinessObject performRequest() {
@@ -72,9 +75,11 @@ public class DownloadBuildInteractor extends BaseInteractor<DownloadResult> {
   public static Runnable getInstance(AppliveryApiService appliveryApiService, String appName,
       BuildTokenInfo buildTokenInfo, InteractorCallback interactorCallback) {
 
+    ExternalStorageWriter externalStorageWriter = new AndroidExternalStorageWriterImpl();
+
     DownloadBuildInteractor downloadBuildInteractor =
         new DownloadBuildInteractor(appliveryApiService, appName, buildTokenInfo,
-            interactorCallback);
+            interactorCallback, externalStorageWriter);
 
     return downloadBuildInteractor;
   }

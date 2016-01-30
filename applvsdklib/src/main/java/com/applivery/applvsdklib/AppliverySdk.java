@@ -35,28 +35,7 @@ public class AppliverySdk {
   private static AppliveryActivityLifecycleCallbacks activityLifecycle;
   private static final Object LOCK = new Object();
 
-  private static final String APPLIVERY_COM = "applivery.com";
-  //private static final int DEFAULT_CORE_POOL_SIZE = 5;
-  //private static final int DEFAULT_MAXIMUM_POOL_SIZE = 128;
-  //private static final int DEFAULT_KEEP_ALIVE = 1;
-  //
-  //private static final int MAX_REQUEST_CODE_RANGE = 100;
-  //
-  //private static final BlockingQueue<Runnable> DEFAULT_WORK_QUEUE =
-  //    new LinkedBlockingQueue<Runnable>(10);
-  //
-  //private static final ThreadFactory DEFAULT_THREAD_FACTORY = new ThreadFactory() {
-  //  private final AtomicInteger counter = new AtomicInteger(0);
-  //
-  //  public Thread newThread(Runnable runnable) {
-  //    return new Thread(runnable, "AppliverySdk #" + counter.incrementAndGet());
-  //  }
-  //};
-
   private static Boolean sdkInitialized = false;
-
-  //Add boolean isPlayStoreRelease --> Add javadoc comment to this variable in order to explain
-  // what is and why
 
   public static synchronized void sdkInitialize(Application app,
       String applicationId, String appClientToken, boolean isPlayStoreRelease) {
@@ -94,8 +73,8 @@ public class AppliverySdk {
     AppliverySdk.applicationContext = applicationContext;
 
     AppliverySdk.appliveryApiService = AppliveryApiServiceBuilder.getAppliveryApiInstance();
-    AppliverySdk.permissionRequestManager = new AndroidPermissionCheckerImpl(applicationContext);
-    AppliverySdk.activityLifecycle = new AppliveryActivityLifecycleCallbacks();
+    AppliverySdk.activityLifecycle = new AppliveryActivityLifecycleCallbacks(applicationContext);
+    AppliverySdk.permissionRequestManager = new AndroidPermissionCheckerImpl(applicationContext, AppliverySdk.activityLifecycle);
 
     app.registerActivityLifecycleCallbacks(activityLifecycle);
   }
@@ -117,12 +96,12 @@ public class AppliverySdk {
     return AppliverySdk.executor;
   }
 
-  //public static void setExecutor(Executor executor) {
-  //  Validate.notNull(executor, "executor");
-  //  synchronized (LOCK) {
-  //    AppliverySdk.executor = executor;
-  //  }
-  //}
+  public static void setExecutor(Executor executor) {
+    Validate.notNull(executor, "executor");
+    synchronized (LOCK) {
+      AppliverySdk.executor = executor;
+    }
+  }
 
   public static Context getApplicationContext() {
     Validate.sdkInitialized();
@@ -170,6 +149,16 @@ public class AppliverySdk {
 
   public static boolean isStoreRelease() {
     return isPlayStoreRelease;
+  }
+
+  public static void cleanAllStatics() {
+    appliveryApiService = null;
+    executor = null;
+    applicationId = appClientToken = null;
+    isPlayStoreRelease = isDebugEnabled = sdkInitialized = false;
+    applicationContext = null;
+    permissionRequestManager = null ;
+    activityLifecycle = null;
   }
 
   public static class Logger {

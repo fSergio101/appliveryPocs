@@ -16,6 +16,8 @@ import com.applivery.applvsdklib.network.api.requests.FeedbackRequest;
  */
 public class FeedbackInteractor extends BaseInteractor<FeedbackResult> {
 
+  //TODO next release stuff
+
   private final FeedbackRequest feedbackRequest;
   private final InteractorCallback feedbackCallback;
   private final FeedbackWrapper feedbackWrapper;

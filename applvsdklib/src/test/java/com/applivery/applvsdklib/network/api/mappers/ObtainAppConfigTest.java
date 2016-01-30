@@ -1,4 +1,4 @@
-package com.applivery.applvsdklib;
+package com.applivery.applvsdklib.network.api.mappers;
 
 import com.applivery.applvsdklib.network.api.AppliveryApiService;
 import com.applivery.applvsdklib.domain.model.AppConfig;
@@ -33,7 +33,6 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class ObtainAppConfigTest {
 
-  //@Mock ApiAppConfigResponse apiAppConfigResponse;
   @Mock SdkMapper sdkMapper;
   @Mock Sdk sdk;
 

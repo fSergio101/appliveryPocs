@@ -5,4 +5,5 @@ package com.applivery.applvsdklib.network.api.model;
  * Date 2/1/16.
  */
 public class ApiFeedbackResponseData {
+  //TODO next release stuff
 }
