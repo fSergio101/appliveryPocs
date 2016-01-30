@@ -16,7 +16,7 @@ public class IsDateEqualTo extends BaseMatcher<Date> {
 
     @Override
     public boolean matches(Object item) {
-        boolean areEquals = Math.abs(expectedValue.getTime() - ((Date) item).getTime()) < 1000;
+        boolean areEquals = Math.abs(expectedValue.getTime() - ((Date) item).getTime()) < 10000;
         return areEquals;
     }
 
