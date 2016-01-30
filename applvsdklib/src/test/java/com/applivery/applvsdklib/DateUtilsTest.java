@@ -1,11 +1,11 @@
 package com.applivery.applvsdklib;
 
-import com.applivery.applvsdklib.matchers.IsDateEqualTo;
 import com.applivery.applvsdklib.tools.utils.DateUtils;
 import java.util.Calendar;
 import java.util.Date;
 import org.junit.Test;
 
+import static com.applivery.applvsdklib.matchers.IsDateEqualTo.isDateEqualTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
@@ -30,7 +30,7 @@ public class DateUtilsTest {
 
         Date expectedDate = getCalendar(2013, Calendar.SEPTEMBER, 29, 18, 46, 19);
 
-        assertThat(expectedDate, IsDateEqualTo.isDateEqualTo(date));
+        assertThat(expectedDate, isDateEqualTo(date));
     }
 
     @Test
@@ -41,7 +41,7 @@ public class DateUtilsTest {
 
         Date expectedDate = getCalendar(2000, Calendar.FEBRUARY, 10, 12, 12, 12);
 
-        assertThat(expectedDate, not(IsDateEqualTo.isDateEqualTo(date)));
+        assertThat(expectedDate, not(isDateEqualTo(date)));
     }
 
     @Test
@@ -52,7 +52,7 @@ public class DateUtilsTest {
 
         Date expectedDate = getCalendar(1970, Calendar.JANUARY, 01, 01, 00, 00);
 
-        assertThat(expectedDate, IsDateEqualTo.isDateEqualTo(date));
+        assertThat(expectedDate, isDateEqualTo(date));
     }
 
     @Test
