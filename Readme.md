@@ -1,4 +1,4 @@
-#Applivery Android SDK - BETA[![Build Status](https://travis-ci.org/fSergio101/appliveryPocs.svg?branch=develop)](https://travis-ci.org/fSergio101/appliveryPocs) [![codecov.io](https://codecov.io/github/fSergio101/appliveryPocs.svg?branch=develop)](https://codecov.io/fSergio101/appliveryPocs)
+#Applivery Android SDK - BETA[![Build Status](https://travis-ci.org/fSergio101/appliveryPocs.svg?branch=develop)](https://travis-ci.org/fSergio101/appliveryPocs) [![codecov.io](https://codecov.io/github/fSergio101/appliveryPocs.svg?branch=develop)](https://codecov.io/github/fSergio101/appliveryPocs)
 
 License
 =======
