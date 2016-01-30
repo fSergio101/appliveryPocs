@@ -3,6 +3,9 @@ env:
   global:
     - ADB_INSTALL_TIMEOUT=8 # 8 minutes (2 minutes by default)
 
+before_install:
+   - pip install codecov
+
 android:
   components:
     - tools
@@ -25,7 +28,5 @@ before_script:
 script:
  - ./gradlew build connectedCheck
 
- before_install:
-   - pip install codecov
- after_success:
+after_success:
    - codecov
