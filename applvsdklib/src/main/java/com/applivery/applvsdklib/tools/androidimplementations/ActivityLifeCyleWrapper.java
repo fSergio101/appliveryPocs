@@ -11,6 +11,7 @@ public class ActivityLifecyleWrapper {
   private boolean isPaused;
   private boolean isStopped;
 
+
   public ActivityLifecyleWrapper(Activity activity, boolean isPaused, boolean isStopped) {
     this.activity = activity;
     this.isPaused = isPaused;
