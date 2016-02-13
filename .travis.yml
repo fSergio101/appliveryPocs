@@ -16,10 +16,15 @@ android:
     - sys-img-armeabi-v7a-android-19
     - extra-android-m2repository
 
+before_install:
+  - pip install --user codecov
+
 script:
-  - ./gradlew build jacocoTestReport assembleAndroidTest
-  - ./gradlew connectedCheck
+  - ./gradlew build jacocoTestReport
+  - ./gradlew check
 
 after_success:
+  - ./gradlew jacocoFullReport
+  - codecov
   - bash <(curl -s https://codecov.io/bash)
 
