@@ -16,14 +16,14 @@ android:
     - sys-img-armeabi-v7a-android-19
     - extra-android-m2repository
 
-before_install:
-  - pip install --user codecov
+install:
+  - pip install codecov
 
 script:
   - ./gradlew check
 
 after_success:
-  - ./gradlew jacocoFullReport
   - codecov
+  - ./gradlew jacocoFullReport
   - bash <(curl -s https://codecov.io/bash)
 
