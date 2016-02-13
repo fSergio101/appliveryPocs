@@ -16,7 +16,7 @@ android:
     - sys-img-armeabi-v7a-android-19
     - extra-android-m2repository
 
-install:
+before_install:
   - pip install --user codecov
 
 script:
