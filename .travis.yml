@@ -20,7 +20,6 @@ before_install:
   - pip install --user codecov
 
 script:
-  - ./gradlew build jacocoTestReport
   - ./gradlew check
 
 after_success:
